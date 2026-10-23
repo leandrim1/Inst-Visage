@@ -1,4 +1,4 @@
-import { Building2, Armchair, Microscope, HeartHandshake, Users } from 'lucide-react'
+import { Building2, Armchair, Microscope, Footprints, ConciergeBell } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 
 import profissional590 from '@/assets/fotos/profissional-visage-590.jpg'
@@ -40,14 +40,18 @@ export const fotoHero: Foto = {
 /**
  * Galeria "Experiência na clínica".
  *
- * COMO PUBLICAR AS FOTOS OFICIAIS
- * 1. Coloque os arquivos em `src/assets/fotos/`.
- * 2. Importe cada arquivo no topo deste módulo.
- * 3. Troque o `foto: null` do item correspondente por um objeto `Foto`,
- *    preenchendo `alt`, `largura` e `altura` com os valores reais.
+ * Os itens abaixo correspondem aos ambientes fotografados pela clínica.
+ * O texto de `alt` já descreve cada cena; falta apenas apontar o arquivo.
  *
- * A seção monta a grade automaticamente com os itens que já têm foto e
- * some da página enquanto nenhum deles estiver preenchido.
+ * COMO PUBLICAR CADA FOTO
+ * 1. Salve o arquivo em `src/assets/fotos/` com o nome indicado no item.
+ * 2. Importe-o no topo deste módulo.
+ * 3. Troque o `foto: null` pelo objeto `Foto`, preenchendo `src`,
+ *    `largura` e `altura` com as dimensões reais do arquivo.
+ *
+ * A grade se monta sozinha com os itens que já têm foto: o primeiro ocupa
+ * o bloco maior e os demais seguem em sequência. Enquanto nenhum estiver
+ * preenchido, a seção exibe o convite para conhecer a clínica.
  */
 export const galeria: ItemGaleria[] = [
   {
@@ -55,13 +59,15 @@ export const galeria: ItemGaleria[] = [
     titulo: 'Fachada e entrada',
     descricao: 'A chegada ao Instituto Visage, no bairro Sobradinho.',
     icone: Building2,
+    // Arquivo esperado: fachada-visage.jpg
     foto: null,
   },
   {
     id: 'recepcao',
     titulo: 'Recepção',
-    descricao: 'O primeiro contato com a equipe, em um ambiente tranquilo.',
+    descricao: 'Um espaço tranquilo para esperar com conforto.',
     icone: Armchair,
+    // Arquivo esperado: recepcao-visage.jpg
     foto: null,
   },
   {
@@ -69,20 +75,31 @@ export const galeria: ItemGaleria[] = [
     titulo: 'Consultório odontológico',
     descricao: 'O espaço onde cada atendimento acontece.',
     icone: Microscope,
+    // Arquivo esperado: consultorio-visage.jpg
     foto: null,
   },
   {
     id: 'atendimento',
-    titulo: 'Ambiente de atendimento',
-    descricao: 'Cuidado e atenção em cada etapa do tratamento.',
-    icone: HeartHandshake,
+    titulo: 'Balcão de atendimento',
+    descricao: 'O primeiro contato com a equipe, logo na entrada.',
+    icone: ConciergeBell,
+    // Arquivo esperado: balcao-visage.jpg
     foto: null,
   },
   {
-    id: 'equipe',
-    titulo: 'Equipe',
-    descricao: 'Quem acompanha você do início ao fim.',
-    icone: Users,
+    id: 'circulacao',
+    titulo: 'Circulação',
+    descricao: 'Ambientes claros, ligando a recepção às salas de atendimento.',
+    icone: Footprints,
+    // Arquivo esperado: circulacao-visage.jpg
+    foto: null,
+  },
+  {
+    id: 'sala-atendimento',
+    titulo: 'Sala de atendimento',
+    descricao: 'Mais um consultório preparado para receber você.',
+    icone: Microscope,
+    // Arquivo esperado: sala-atendimento-visage.jpg
     foto: null,
   },
 ]
