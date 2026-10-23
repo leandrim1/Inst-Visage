@@ -1,6 +1,5 @@
 import { MapPin, Clock, MessageCircle, ExternalLink } from 'lucide-react'
 
-import { cn } from '@/lib/utils'
 import { clinica } from '@/data/clinica'
 import { galeria } from '@/data/galeria'
 import { whatsapp } from '@/lib/whatsapp'
@@ -36,30 +35,28 @@ export function Experiencia() {
         <ul className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {comFoto.map((item, indice) => {
             const foto = item.foto!
-            // Primeiro item ocupa mais espaço, evitando uma grade monótona.
-            const largo = indice === 0
 
             return (
-              <li key={item.id} className={cn(largo && 'sm:col-span-2 lg:row-span-2')}>
+              <li key={item.id}>
                 <Revelar atraso={indice * 80} className="h-full">
-                  <figure className="group relative h-full overflow-hidden rounded-[1.75rem] bg-azul-800 shadow-suave">
+                  <figure className="group relative overflow-hidden rounded-[1.75rem] bg-azul-800 shadow-suave">
                     <img
                       src={foto.src}
                       srcSet={
                         foto.srcPequeno ? `${foto.srcPequeno} 480w, ${foto.src} ${foto.largura}w` : undefined
                       }
-                      sizes={largo ? '(max-width: 640px) 92vw, 44rem' : '(max-width: 640px) 92vw, 22rem'}
+                      sizes="(max-width: 640px) 92vw, (max-width: 1024px) 44vw, 24rem"
                       width={foto.largura}
                       height={foto.altura}
                       alt={foto.alt}
                       loading="lazy"
                       decoding="async"
-                      className={cn(
-                        'w-full object-cover transition-transform duration-500 ease-[var(--ease-marca)] motion-safe:group-hover:scale-[1.03]',
-                        largo ? 'aspect-4/3 lg:h-full' : 'aspect-4/3',
-                      )}
+                      /* Retrato 3:4, a mesma proporção dos arquivos: nada é cortado. */
+                      className="aspect-3/4 w-full object-cover transition-transform duration-500 ease-[var(--ease-marca)] motion-safe:group-hover:scale-[1.03]"
                     />
-                    <figcaption className="absolute inset-x-0 bottom-0 bg-linear-to-t from-azul-900/85 to-transparent px-6 pt-12 pb-5">
+                    {/* O véu precisa cobrir toda a faixa do texto: nas fotos mais
+                        claras, um degradê fraco deixaria a legenda ilegível. */}
+                    <figcaption className="absolute inset-x-0 bottom-0 bg-linear-to-t from-azul-900/95 via-azul-900/85 via-60% to-transparent px-6 pt-16 pb-5">
                       <span className="font-titulo block text-base font-bold text-white">
                         {item.titulo}
                       </span>

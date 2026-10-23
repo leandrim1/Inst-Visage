@@ -154,37 +154,56 @@ três arquivos mantendo os mesmos nomes e proporção quadrada.
 Os ícones de navegador em `public/` (`favicon-16`, `favicon-32`,
 `apple-touch-icon`, `og-visage.jpg`) foram gerados a partir dela.
 
-### Publicar as fotos da clínica
+### As fotos da clínica
 
-A seção **Experiência na clínica** mostra apenas fotografias reais. Enquanto
-não houver nenhuma, ela exibe um convite para conhecer a clínica, com
-endereço, horários e botões de contato — e **nunca** fotos ilustrativas de
-consultórios que não são os do Instituto Visage.
+A seção **Experiência na clínica** mostra seis fotografias reais do
+Instituto Visage, em `src/assets/fotos/`:
 
-Para publicar as fotos oficiais, em `src/data/galeria.ts`:
+| Arquivo | Ambiente |
+| --- | --- |
+| `fachada-visage.webp` | Fachada e entrada |
+| `recepcao-visage.webp` | Recepção |
+| `consultorio-visage.webp` | Consultório odontológico |
+| `balcao-visage.webp` | Balcão de atendimento |
+| `circulacao-visage.webp` | Circulação |
+| `sala-atendimento-visage.webp` | Sala de atendimento |
+
+Todas estão em retrato 382×510. A grade usa `aspect-3/4`, a mesma proporção
+dos arquivos, para não cortar nem esticar nenhuma imagem.
+
+> As fotos atuais vieram em baixa resolução. Se existirem os originais da
+> câmera, substituí-los deixa a galeria visivelmente mais nítida em telas
+> de alta densidade — basta trocar o arquivo e atualizar `largura` e
+> `altura` no item correspondente.
+
+Para trocar ou acrescentar uma foto, em `src/data/galeria.ts`:
 
 ```ts
-import recepcao from '@/assets/fotos/recepcao.jpg'
+import recepcao from '@/assets/fotos/recepcao-visage.webp'
 
 // …
 
 {
   id: 'recepcao',
   titulo: 'Recepção',
-  descricao: 'O primeiro contato com a equipe, em um ambiente tranquilo.',
+  descricao: 'Um espaço tranquilo para esperar com conforto.',
   icone: Armchair,
   foto: {
     src: recepcao,
-    alt: 'Recepção do Instituto Visage, com poltronas claras e balcão de atendimento.',
-    largura: 1600,
-    altura: 1200,
+    alt: 'Sala de espera do Instituto Visage, com poltronas claras e espelho redondo.',
+    largura: 382,
+    altura: 510,
   },
 },
 ```
 
-A grade se monta sozinha com os itens que já têm foto. O `alt` é obrigatório
-e deve descrever a cena; `largura` e `altura` evitam que o layout salte
-enquanto a imagem carrega.
+A grade se monta sozinha com os itens que têm foto; um item com `foto: null`
+não aparece. O `alt` é obrigatório e deve descrever a cena; `largura` e
+`altura` evitam que o layout salte enquanto a imagem carrega.
+
+Nenhuma imagem ilustrativa de banco de imagens é usada: se um dia todos os
+itens ficarem sem foto, a seção volta a exibir o convite para conhecer a
+clínica, em vez de mostrar consultórios que não são os do Instituto Visage.
 
 A mesma estrutura vale para `fotoAmbiente`, usada na seção institucional:
 enquanto for `null`, aquele espaço recebe uma composição com a marca.
