@@ -35,3 +35,6 @@ pnpm-debug.log*
 # Cache de ferramentas
 .eslintcache
 *.tsbuildinfo
+
+# Capturas de tela geradas durante o desenvolvimento
+.preview-*.jpg
