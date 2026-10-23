@@ -4,9 +4,13 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 
+import { pluginCasos } from './vite/casos'
+
+const pastaCasos = fileURLToPath(new URL('./src/assets/casos', import.meta.url))
+
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react(), tailwindcss()],
+  plugins: [react(), tailwindcss(), pluginCasos(pastaCasos)],
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),

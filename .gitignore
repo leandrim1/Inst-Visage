@@ -38,3 +38,8 @@ pnpm-debug.log*
 
 # Capturas de tela geradas durante o desenvolvimento
 .preview-*.jpg
+
+# Fotos de casos clínicos: imagens de pacientes ficam fora do repositório.
+# Veja src/assets/casos/LEIA-ME.md
+src/assets/casos/*
+!src/assets/casos/LEIA-ME.md

@@ -1,5 +1,7 @@
 import { useMetaPagina } from '@/lib/seo'
+import { MOSTRAR_CASOS, casosDisponiveis } from '@/data/casos'
 import { Hero } from '@/components/secoes/Hero'
+import { Casos } from '@/components/secoes/Casos'
 import { SobreClinica } from '@/components/secoes/SobreClinica'
 import { Especialidades } from '@/components/secoes/Especialidades'
 import { Diferenciais } from '@/components/secoes/Diferenciais'
@@ -24,6 +26,9 @@ export default function Home() {
       <Especialidades />
       <Diferenciais />
       <Experiencia />
+      {/* Seção temporária: some sozinha se a pasta de fotos estiver vazia
+          ou se MOSTRAR_CASOS for desligado antes da publicação. */}
+      {MOSTRAR_CASOS && casosDisponiveis.length > 0 && <Casos />}
       <ChamadaAgendamento />
       <PerguntasFrequentes />
       <Contato />
